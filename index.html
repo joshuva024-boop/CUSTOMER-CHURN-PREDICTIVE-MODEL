@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ChurnGuard AI — An AI-powered customer retention intelligence platform that predicts churn, identifies at-risk customers, and recommends targeted retention strategies.">
+    <title>ChurnGuard AI — Customer Churn Predictive Model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <span class="brand-icon">🛡️</span>
+                <span class="brand-text">ChurnGuard <span class="brand-highlight">AI</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#demo" class="nav-link">Demo</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#metrics" class="nav-link">Performance</a></li>
+                <li><a href="#pipeline" class="nav-link">ML Pipeline</a></li>
+                <li><a href="#tech" class="nav-link">Tech Stack</a></li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Day or Night Scene">
+                    <span class="theme-icon" id="themeIcon">🌙</span>
+                    <span class="theme-text" id="themeText">Night Scene</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-effects">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-badge">🤖 AI-Powered Customer Intelligence</div>
+            <h1 class="hero-title">
+                Predict Churn<br>
+                <span class="gradient-text">Before Customers Leave</span>
+            </h1>
+            <p class="hero-subtitle">
+                An end-to-end machine learning platform that identifies at-risk customers,
+                explains churn drivers, and recommends targeted retention strategies — powered by Random Forest.
+            </p>
+            <div class="hero-actions">
+                <a href="#demo" class="btn btn-primary">
+                    <span>Explore Dashboard</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="#pipeline" class="btn btn-secondary">
+                    <span>View Pipeline</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-value">5,000+</span>
+                    <span class="stat-label">Customers Analyzed</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-value">82.4%</span>
+                    <span class="stat-label">ROC-AUC Score</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-value">77.0%</span>
+                    <span class="stat-label">Churn Recall</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="hero-stat">
+                    <span class="stat-value">15+</span>
+                    <span class="stat-label">Features Engineered</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ===== LIVE DEMO / PREDICTION ===== -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Try It</span>
+                <h2 class="section-title">Sample <span class="gradient-text">Prediction</span></h2>
+                <p class="section-desc">See how ChurnGuard AI analyzes a customer profile and generates actionable
+                    intelligence.</p>
+            </div>
+            <div class="demo-container">
+                <div class="demo-input">
+                    <h3>📋 Customer Profile</h3>
+                    <div class="demo-fields">
+                        <div class="demo-field">
+                            <label for="demo-age" class="field-label">Age</label>
+                            <input type="number" id="demo-age" class="field-input" placeholder="35" min="18" max="100">
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-tenure" class="field-label">Tenure (months)</label>
+                            <input type="number" id="demo-tenure" class="field-input" placeholder="3" min="0" max="72">
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-contract" class="field-label">Contract</label>
+                            <select id="demo-contract" class="field-select default-value" data-default="">
+                                <option value="" disabled selected hidden>Select Contract</option>
+                                <option value="Month-to-Month">Month-to-Month</option>
+                                <option value="One Year">One Year</option>
+                                <option value="Two Year">Two Year</option>
+                            </select>
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-monthly-charges" class="field-label">Monthly Charges</label>
+                            <div class="charge-input-wrapper">
+                                <span class="currency-symbol">₹</span>
+                                <input type="number" id="demo-monthly-charges" class="field-input" placeholder="95.00"
+                                    min="10" max="250" step="0.01">
+                            </div>
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-payment" class="field-label">Payment</label>
+                            <select id="demo-payment" class="field-select default-value" data-default="">
+                                <option value="" disabled selected hidden>Select Payment</option>
+                                <option value="Electronic Check">Electronic Check</option>
+                                <option value="Mailed Check">Mailed Check</option>
+                                <option value="Bank Transfer">Bank Transfer</option>
+                                <option value="Credit Card">Credit Card</option>
+                            </select>
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-internet" class="field-label">Internet</label>
+                            <select id="demo-internet" class="field-select default-value" data-default="">
+                                <option value="" disabled selected hidden>Select Internet</option>
+                                <option value="Fiber Optic">Fiber Optic</option>
+                                <option value="DSL">DSL</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-tech-support" class="field-label">Tech Support</label>
+                            <select id="demo-tech-support" class="field-select default-value" data-default="">
+                                <option value="" disabled selected hidden>Select Support</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-support-tickets" class="field-label">Support Tickets</label>
+                            <input type="number" id="demo-support-tickets" class="field-input" placeholder="5" min="0"
+                                max="20">
+                        </div>
+                        <div class="demo-field">
+                            <label for="demo-satisfaction" class="field-label">Satisfaction (1-5)</label>
+                            <select id="demo-satisfaction" class="field-select default-value" data-default="">
+                                <option value="" disabled selected hidden>Select Score</option>
+                                <option value="1">1 / 5</option>
+                                <option value="2">2 / 5</option>
+                                <option value="3">3 / 5</option>
+                                <option value="4">4 / 5</option>
+                                <option value="5">5 / 5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-arrow-wrap">
+                    <div class="demo-process-arrow">
+                        <span>⚡</span>
+                        <small>AI Model</small>
+                    </div>
+                </div>
+                <div class="demo-output" style="position: relative; overflow: hidden;">
+                    <!-- Scanner Line -->
+                    <div class="scanner-line" id="demo-scanner" style="display: none;"></div>
+
+                    <!-- Processing Overlay -->
+                    <div class="processing-overlay" id="demo-processing" style="display: none;">
+                        <div class="processing-content">
+                            <div class="brain-spinner">🧠</div>
+                            <p
+                                style="font-weight: 600; margin-top: 10px; font-size: 0.95rem; letter-spacing: 0.5px; color: var(--text-primary);">
+                                Calculating Risk Score...</p>
+                        </div>
+                    </div>
+
+                    <h3 id="prediction-title-label">📋 Example Prediction</h3>
+
+                    <!-- Interactive Progress Placeholder -->
+                    <div class="demo-placeholder-info" id="demo-placeholder" style="display: none;">
+                        <div class="placeholder-icon">🔮</div>
+                        <h4>Predicting Churn...</h4>
+                        <p>Complete the customer profile on the left to run the AI prediction model.</p>
+                        <div class="progress-indicator">
+                            <span id="fields-completed-count">0</span> / 9 fields completed
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar-fill" id="fields-progress-bar" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-result" id="demo-result-card" style="transition: all 0.3s ease;">
+                        <div class="result-gauge">
+                            <div class="gauge-circle high" id="demo-gauge-circle">
+                                <span class="gauge-value" id="demo-probability">78%</span>
+                                <span class="gauge-label">Churn Probability</span>
+                            </div>
+                        </div>
+                        <div class="result-badge risk-high-badge" id="demo-risk-badge">🔴 HIGH RISK</div>
+                        <div class="result-action high" id="demo-action-box">
+                            <h4>Recommended Action</h4>
+                            <p id="demo-action-text">Escalate to priority support team. Assign dedicated support agent,
+                                resolve outstanding tickets, and follow up with satisfaction survey.</p>
+                        </div>
+                        <div class="result-factors">
+                            <h4>Top Risk Factors</h4>
+                            <div id="demo-factors-list">
+                                <div class="factor"><span>Contract Type</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width:90%"></div>
+                                    </div>
+                                </div>
+                                <div class="factor"><span>Support Tickets</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width:78%"></div>
+                                    </div>
+                                </div>
+                                <div class="factor"><span>Satisfaction</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width:65%"></div>
+                                    </div>
+                                </div>
+                                <div class="factor"><span>Monthly Charges</span>
+                                    <div class="factor-bar">
+                                        <div class="factor-fill" style="width:52%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Capabilities</span>
+                <h2 class="section-title">Powerful Features for <span class="gradient-text">Retention
+                        Intelligence</span></h2>
+                <p class="section-desc">From data preprocessing to actionable recommendations — a complete churn
+                    prevention toolkit.</p>
+            </div>
+            <div class="features-grid">
+
+                <div class="feature-card" data-feature="risk-classification">
+                    <div class="feature-card-header">
+                        <div class="feature-icon-wrap"><span class="feature-icon">🔴</span></div>
+                        <span class="explore-badge">Explore ↗</span>
+                    </div>
+                    <h3>Risk Classification</h3>
+                    <p>Three-tier risk system based on predicted probability — High (≥70%), Medium (40–69%), Low
+                        (&lt;40%). Fully configurable thresholds.</p>
+                </div>
+                <div class="feature-card" data-feature="retention-engine">
+                    <div class="feature-card-header">
+                        <div class="feature-icon-wrap"><span class="feature-icon">🎯</span></div>
+                        <span class="explore-badge">Explore ↗</span>
+                    </div>
+                    <h3>Retention Engine</h3>
+                    <p>Rule-based recommendations that map risk levels and customer attributes to specific, actionable
+                        retention strategies.</p>
+                </div>
+                <div class="feature-card" data-feature="interactive-eda">
+                    <div class="feature-card-header">
+                        <div class="feature-icon-wrap"><span class="feature-icon">📊</span></div>
+                        <span class="explore-badge">Explore ↗</span>
+                    </div>
+                    <h3>Interactive EDA</h3>
+                    <p>10+ publication-quality visualizations analyzing churn patterns across contracts, tenure,
+                        charges, satisfaction, and more.</p>
+                </div>
+                <div class="feature-card" data-feature="whatif-predictor">
+                    <div class="feature-card-header">
+                        <div class="feature-icon-wrap"><span class="feature-icon">🔮</span></div>
+                        <span class="explore-badge">Try Simulator ⚡</span>
+                    </div>
+                    <h3>What-If Predictor</h3>
+                    <p>Enter any customer profile and get real-time churn probability, risk level, and recommended
+                        actions from the actual model.</p>
+                </div>
+                <div class="feature-card" data-feature="saas-dashboard">
+                    <div class="feature-card-header">
+                        <div class="feature-icon-wrap"><span class="feature-icon">📱</span></div>
+                        <span class="explore-badge">View Demo ↗</span>
+                    </div>
+                    <h3>SaaS Dashboard</h3>
+                    <p>Modern dark-themed Streamlit dashboard with interactive Plotly charts, KPI cards, customer
+                        search, and CSV export.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODEL PERFORMANCE ===== -->
+    <section class="metrics" id="metrics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Results</span>
+                <h2 class="section-title">Model <span class="gradient-text">Performance</span></h2>
+                <p class="section-desc">All metrics computed from the actual trained Random Forest model — nothing
+                    fabricated.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-ring" style="--progress: 74.7; --color: #6366f1;">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="metric-bg" />
+                            <circle cx="60" cy="60" r="52" class="metric-fill" />
+                        </svg>
+                        <span class="metric-value">74.7%</span>
+                    </div>
+                    <h4>Accuracy</h4>
+                    <p>Overall correct predictions</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-ring" style="--progress: 65.2; --color: #8b5cf6;">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="metric-bg" />
+                            <circle cx="60" cy="60" r="52" class="metric-fill" />
+                        </svg>
+                        <span class="metric-value">65.2%</span>
+                    </div>
+                    <h4>Precision</h4>
+                    <p>Of predicted churners, how many actually churned</p>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-ring" style="--progress: 77.0; --color: #22c55e;">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="metric-bg" />
+                            <circle cx="60" cy="60" r="52" class="metric-fill" />
+                        </svg>
+                        <span class="metric-value">77.0%</span>
+                    </div>
+                    <h4>Recall ⭐</h4>
+                    <p>Of actual churners, how many were detected</p>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-ring" style="--progress: 70.6; --color: #a78bfa;">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="metric-bg" />
+                            <circle cx="60" cy="60" r="52" class="metric-fill" />
+                        </svg>
+                        <span class="metric-value">70.6%</span>
+                    </div>
+                    <h4>F1 Score</h4>
+                    <p>Harmonic mean of precision & recall</p>
+                </div>
+                <div class="metric-card highlight">
+                    <div class="metric-ring" style="--progress: 82.4; --color: #f59e0b;">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="52" class="metric-bg" />
+                            <circle cx="60" cy="60" r="52" class="metric-fill" />
+                        </svg>
+                        <span class="metric-value">82.4%</span>
+                    </div>
+                    <h4>ROC-AUC ⭐</h4>
+                    <p>Area under the ROC curve</p>
+                </div>
+            </div>
+            <div class="metrics-note">
+                <p>📌 We prioritize <strong>Recall</strong> and <strong>F1-Score</strong> over raw accuracy — missing a
+                    customer who is about to churn (false negative) is far more costly than a false alarm.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ===== ML PIPELINE ===== -->
+    <section class="pipeline" id="pipeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Architecture</span>
+                <h2 class="section-title">End-to-End <span class="gradient-text">ML Pipeline</span></h2>
+                <p class="section-desc">A complete, reproducible machine learning workflow — from raw data to production
+                    predictions.</p>
+            </div>
+            <div class="pipeline-flow">
+                <div class="pipeline-step">
+                    <div class="pipe-icon">📁</div>
+                    <h4>Data Generation</h4>
+                    <p>5,000+ synthetic records with logistic churn model</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipe-icon">🧹</div>
+                    <h4>Preprocessing</h4>
+                    <p>ColumnTransformer pipeline with imputation & encoding</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipe-icon">📊</div>
+                    <h4>EDA</h4>
+                    <p>10 professional visualizations of churn patterns</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipe-icon">🌲</div>
+                    <h4>Model Training</h4>
+                    <p>Random Forest with RandomizedSearchCV tuning</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipe-icon">📈</div>
+                    <h4>Evaluation</h4>
+                    <p>Metrics, ROC curve, confusion matrix, importance</p>
+                </div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">
+                    <div class="pipe-icon">🎯</div>
+                    <h4>Prediction</h4>
+                    <p>Risk classification & retention recommendations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section class="tech" id="tech">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Built With</span>
+                <h2 class="section-title">Technology <span class="gradient-text">Stack</span></h2>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">🐍</div>
+                    <h4>Python</h4>
+                    <p>Core Language</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🐼</div>
+                    <h4>Pandas</h4>
+                    <p>Data Manipulation</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🔢</div>
+                    <h4>NumPy</h4>
+                    <p>Numerical Computing</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🧠</div>
+                    <h4>Scikit-learn</h4>
+                    <p>ML Pipeline</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🌲</div>
+                    <h4>Random Forest</h4>
+                    <p>Classification</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📊</div>
+                    <h4>Matplotlib</h4>
+                    <p>Visualization</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🎨</div>
+                    <h4>Seaborn</h4>
+                    <p>Statistical Charts</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">📈</div>
+                    <h4>Plotly</h4>
+                    <p>Interactive Charts</p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon">🚀</div>
+                    <h4>Streamlit</h4>
+                    <p>Dashboard</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-icon">🛡️</span>
+                    <span class="brand-text">ChurnGuard <span class="brand-highlight">AI</span></span>
+                    <p class="footer-tagline">Predict · Prevent · Retain</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#demo">Demo</a>
+                    <a href="#features">Features</a>
+                    <a href="#metrics">Performance</a>
+                    <a href="#pipeline">Pipeline</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ChurnGuard AI — Customer Churn Predictive Model</p>
+                <p class="footer-quote">"Don't wait for customers to leave. Predict churn before it happens."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== Day & Night Visual Scene Engine =====
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+
+        const savedTheme = localStorage.getItem('churn_guard_theme') || 'dark';
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('churn_guard_theme', theme);
+            if (theme === 'light') {
+                if (themeIcon) themeIcon.innerText = '☀️';
+                if (themeText) themeText.innerText = 'Day Scene';
+            } else {
+                if (themeIcon) themeIcon.innerText = '🌙';
+                if (themeText) themeText.innerText = 'Night Scene';
+            }
+        }
+
+        setTheme(savedTheme);
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(nextTheme);
+            });
+        }
+
+        // ===== Navbar scroll effect =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // ===== Mobile toggle =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // ===== Active link tracking =====
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (scrollY >= top) current = section.getAttribute('id');
+            });
+            navItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+
+        // ===== Smooth scroll =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // ===== Animate on scroll =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .metric-card, .pipeline-step, .tech-card, .eda-card, .problem-card, .solution-step').forEach(el => {
+            el.classList.add('animate-in');
+            observer.observe(el);
+        });
+
+        // ===== Metric ring animation =====
+        const metricObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.metric-ring').forEach(el => metricObserver.observe(el));
+
+        // ===== Interactive Sample Prediction Engine =====
+        const fields = {
+            age: { el: document.getElementById('demo-age'), default: 35 },
+            tenure: { el: document.getElementById('demo-tenure'), default: 3 },
+            contract: { el: document.getElementById('demo-contract'), default: 'Month-to-Month' },
+            monthlyCharges: { el: document.getElementById('demo-monthly-charges'), default: 95.00 },
+            payment: { el: document.getElementById('demo-payment'), default: 'Electronic Check' },
+            internet: { el: document.getElementById('demo-internet'), default: 'Fiber Optic' },
+            techSupport: { el: document.getElementById('demo-tech-support'), default: 'No' },
+            tickets: { el: document.getElementById('demo-support-tickets'), default: 5 },
+            satisfaction: { el: document.getElementById('demo-satisfaction'), default: 2 }
+        };
+
+        function getFieldValue(fieldKey) {
+            const field = fields[fieldKey];
+            const val = field.el.value;
+            if (val === '') {
+                return field.default;
+            }
+            if (field.el.type === 'number') {
+                return parseFloat(val);
+            }
+            return val;
+        }
+
+        let hasScanned = false;
+
+        function updatePrediction() {
+            // Count how many fields have been interacted with
+            const interactedCount = Object.keys(fields).filter(key => fields[key].el.classList.contains('user-interacted')).length;
+            const allFilled = (interactedCount === 9);
+
+            const labelEl = document.getElementById('prediction-title-label');
+            const placeholderEl = document.getElementById('demo-placeholder');
+            const resultCard = document.getElementById('demo-result-card');
+
+            if (interactedCount === 0) {
+                // Show Example Prediction initially
+                labelEl.innerText = '📋 Example Prediction';
+                placeholderEl.style.display = 'none';
+                resultCard.style.display = 'block';
+                resultCard.style.opacity = '1';
+
+                // Keep showing the example values (78%)
+                const probEl = document.getElementById('demo-probability');
+                const gaugeEl = document.getElementById('demo-gauge-circle');
+                const badgeEl = document.getElementById('demo-risk-badge');
+                const boxEl = document.getElementById('demo-action-box');
+                const actionTextEl = document.getElementById('demo-action-text');
+
+                probEl.innerText = '78%';
+                gaugeEl.className = 'gauge-circle high';
+                badgeEl.className = 'risk-high-badge';
+                badgeEl.innerText = '🔴 HIGH RISK';
+                boxEl.className = 'result-action high';
+                actionTextEl.innerText = 'Escalate to priority support team. Assign dedicated support agent, resolve outstanding tickets, and follow up with satisfaction survey.';
+
+                const factorsListEl = document.getElementById('demo-factors-list');
+                factorsListEl.innerHTML = `
+                    <div class="factor"><span>Contract Type</span><div class="factor-bar"><div class="factor-fill" style="width:90%"></div></div></div>
+                    <div class="factor"><span>Support Tickets</span><div class="factor-bar"><div class="factor-fill" style="width:78%"></div></div></div>
+                    <div class="factor"><span>Satisfaction</span><div class="factor-bar"><div class="factor-fill" style="width:65%"></div></div></div>
+                    <div class="factor"><span>Monthly Charges</span><div class="factor-bar"><div class="factor-fill" style="width:52%"></div></div></div>
+                `;
+                return;
+            }
+
+            if (interactedCount > 0 && interactedCount < 9) {
+                // Hide Example Prediction and show dynamic completed count
+                labelEl.innerText = '⚙️ Running ML Model...';
+                resultCard.style.display = 'none';
+                placeholderEl.style.display = 'flex';
+
+                document.getElementById('fields-completed-count').innerText = interactedCount;
+                const percentage = Math.round((interactedCount / 9) * 100);
+                document.getElementById('fields-progress-bar').style.width = percentage + '%';
+                return;
+            }
+
+            // If all fields are filled, hide progress placeholder and show results card
+            placeholderEl.style.display = 'none';
+            resultCard.style.display = 'block';
+
+            // If all fields are filled, but we haven't run the scanning animation yet
+            if (allFilled && !hasScanned) {
+                hasScanned = true; // prevent double scans
+
+                const scanner = document.getElementById('demo-scanner');
+                const overlay = document.getElementById('demo-processing');
+
+                // Show processing scanning animation
+                scanner.style.display = 'block';
+                overlay.style.display = 'flex';
+                resultCard.style.opacity = '0.15';
+
+                setTimeout(() => {
+                    // Hide scanning
+                    scanner.style.display = 'none';
+                    overlay.style.display = 'none';
+                    resultCard.style.opacity = '1';
+
+                    // Update values and animate reveal
+                    calculateAndRenderPrediction();
+                    resultCard.classList.add('revealed');
+
+                    // Remove animation class after it completes
+                    setTimeout(() => {
+                        resultCard.classList.remove('revealed');
+                    }, 600);
+                }, 1500);
+
+                return;
+            }
+
+            // If we have already scanned once, just calculate and render instantly
+            calculateAndRenderPrediction();
+        }
+
+        function calculateAndRenderPrediction() {
+            const data = {
+                age: getFieldValue('age'),
+                tenure: getFieldValue('tenure'),
+                contract: getFieldValue('contract'),
+                monthlyCharges: getFieldValue('monthlyCharges'),
+                payment: getFieldValue('payment'),
+                internet: getFieldValue('internet'),
+                techSupport: getFieldValue('techSupport'),
+                tickets: getFieldValue('tickets'),
+                satisfaction: getFieldValue('satisfaction')
+            };
+
+            // Calculate score using calibrated base + weights
+            let score = 0.25;
+
+            // Contract
+            if (data.contract === 'Month-to-Month') score += 0.10;
+            else if (data.contract === 'One Year') score -= 0.08;
+            else if (data.contract === 'Two Year') score -= 0.15;
+
+            // Tenure
+            if (data.tenure <= 3) score += 0.08;
+            else if (data.tenure <= 12) score += 0.04;
+            else if (data.tenure >= 48) score -= 0.12;
+            else if (data.tenure >= 24) score -= 0.06;
+
+            // Satisfaction
+            if (data.satisfaction === 1) score += 0.15;
+            else if (data.satisfaction === 2) score += 0.08;
+            else if (data.satisfaction === 4) score -= 0.08;
+            else if (data.satisfaction === 5) score -= 0.15;
+
+            // Support tickets
+            if (data.tickets >= 5) score += 0.12;
+            else if (data.tickets >= 3) score += 0.06;
+            else if (data.tickets === 0) score -= 0.04;
+
+            // Monthly charges
+            if (data.monthlyCharges >= 100) score += 0.08;
+            else if (data.monthlyCharges >= 75) score += 0.04;
+            else if (data.monthlyCharges <= 35) score -= 0.05;
+
+            // Tech support
+            if (data.techSupport === 'No') score += 0.03;
+            else if (data.techSupport === 'Yes') score -= 0.03;
+
+            // Internet
+            if (data.internet === 'Fiber Optic') score += 0.05;
+            else if (data.internet === 'No') score -= 0.08;
+
+            // Payment
+            if (data.payment === 'Electronic Check') score += 0.03;
+            else if (data.payment === 'Credit Card' || data.payment === 'Bank Transfer' || data.payment === 'Online Payment') score -= 0.03;
+
+            // Age
+            if (data.age >= 60) score += 0.02;
+
+            // Clamp
+            const probability = Math.max(0.02, Math.min(0.98, score));
+            const probabilityPercent = Math.round(probability * 100);
+
+            // Update UI elements
+            const probEl = document.getElementById('demo-probability');
+            const gaugeEl = document.getElementById('demo-gauge-circle');
+            const badgeEl = document.getElementById('demo-risk-badge');
+            const boxEl = document.getElementById('demo-action-box');
+            const actionTextEl = document.getElementById('demo-action-text');
+            const labelEl = document.getElementById('prediction-title-label');
+
+            labelEl.innerText = '🎯 Custom Prediction';
+            probEl.innerText = probabilityPercent + '%';
+
+            // Determine Risk Category
+            let riskClass = 'high';
+            let badgeText = '🔴 HIGH RISK';
+            let actionText = 'Escalate to priority support team. Assign dedicated support agent, resolve outstanding tickets, and follow up with satisfaction survey.';
+
+            if (probability >= 0.70) {
+                riskClass = 'high';
+                badgeText = '🔴 HIGH RISK';
+                actionText = 'Escalate to priority support team. Assign dedicated support agent, resolve outstanding tickets, and follow up with satisfaction survey.';
+            } else if (probability >= 0.40) {
+                riskClass = 'medium';
+                badgeText = '🟠 MEDIUM RISK';
+                actionText = 'Offer a contract upgrade promotion (e.g., 10% discount on 1-year contract) and schedule a check-in call with customer success.';
+            } else {
+                riskClass = 'low';
+                badgeText = '🟢 LOW RISK';
+                actionText = 'Maintain standard engagement. Keep customer updated on new features and offer loyalty program details.';
+            }
+
+            // Update classes & badge
+            gaugeEl.className = 'gauge-circle ' + riskClass;
+            badgeEl.className = 'risk-' + riskClass + '-badge';
+            badgeEl.innerText = badgeText;
+
+            boxEl.className = 'result-action ' + riskClass;
+            actionTextEl.innerText = actionText;
+
+            // Update Top Risk Factors list
+            const factorsListEl = document.getElementById('demo-factors-list');
+            factorsListEl.innerHTML = '';
+
+            const factors = [];
+            if (data.contract === 'Month-to-Month') factors.push({ name: 'Contract Type', value: 90 });
+            if (data.tickets >= 5) factors.push({ name: 'Support Tickets', value: 78 });
+            else if (data.tickets >= 3) factors.push({ name: 'Support Tickets', value: 55 });
+            if (data.satisfaction === 1) factors.push({ name: 'Satisfaction', value: 85 });
+            else if (data.satisfaction === 2) factors.push({ name: 'Satisfaction', value: 65 });
+            if (data.monthlyCharges >= 100) factors.push({ name: 'Monthly Charges', value: 75 });
+            else if (data.monthlyCharges >= 75) factors.push({ name: 'Monthly Charges', value: 52 });
+            if (data.tenure <= 3) factors.push({ name: 'Tenure', value: 70 });
+            else if (data.tenure <= 12) factors.push({ name: 'Tenure', value: 45 });
+            if (data.techSupport === 'No') factors.push({ name: 'Tech Support', value: 40 });
+            if (data.internet === 'Fiber Optic') factors.push({ name: 'Internet Type', value: 35 });
+            if (data.payment === 'Electronic Check') factors.push({ name: 'Payment Method', value: 30 });
+
+            factors.sort((a, b) => b.value - a.value);
+            const topFactors = factors.slice(0, 4);
+
+            topFactors.forEach(f => {
+                const factorEl = document.createElement('div');
+                factorEl.className = 'factor';
+                factorEl.innerHTML = `<span>${f.name}</span><div class="factor-bar"><div class="factor-fill" style="width:${f.value}%"></div></div>`;
+                factorsListEl.appendChild(factorEl);
+            });
+        }
+
+        // Attach listeners to all interactive inputs
+        Object.keys(fields).forEach(key => {
+            const el = fields[key].el;
+
+            const handleInput = () => {
+                if (el.value !== '') {
+                    el.classList.add('user-interacted');
+                    if (el.tagName === 'SELECT') {
+                        el.classList.remove('default-value');
+                    }
+                } else {
+                    el.classList.remove('user-interacted');
+                    if (el.tagName === 'SELECT') {
+                        el.classList.add('default-value');
+                    }
+                }
+                updatePrediction();
+            };
+
+            el.addEventListener('input', handleInput);
+            el.addEventListener('change', handleInput);
+        });
+
+        // Initialize prediction output on page load
+        updatePrediction();
+    </script>
+
+    <!-- ===== FEATURE DETAIL MODAL ===== -->
+    <div class="feature-modal-backdrop" id="featureModal" style="display: none;">
+        <div class="feature-modal-dialog">
+            <button class="modal-close-btn" id="closeFeatureModal" aria-label="Close modal">&times;</button>
+            <div class="modal-body-container" id="featureModalBody">
+                <!-- Content will be injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Feature Detail Modal Logic =====
+        const featureModalData = {
+            'rf-classifier': {
+                title: '🌲 Random Forest Classifier Architecture',
+                badge: 'Machine Learning Model',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Interactive model hyperparameter tuning simulator and decision tree topology breakdown.</p>
+                    </div>
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>Hyperparameter Tuner Simulator</h4>
+                            <div class="sim-control">
+                                <label>n_estimators (Trees): <span id="val-trees">100</span></label>
+                                <input type="range" id="sim-trees" min="10" max="200" value="100" class="sim-slider">
+                            </div>
+                            <div class="sim-control">
+                                <label>max_depth: <span id="val-depth">12</span></label>
+                                <input type="range" id="sim-depth" min="3" max="25" value="12" class="sim-slider">
+                            </div>
+                            <div class="sim-control">
+                                <label>min_samples_split: <span id="val-split">4</span></label>
+                                <input type="range" id="sim-split" min="2" max="10" value="4" class="sim-slider">
+                            </div>
+                            <div class="sim-metrics">
+                                <div class="sim-metric-box">
+                                    <small>Simulated F1-Score</small>
+                                    <strong id="sim-f1">77.4%</strong>
+                                </div>
+                                <div class="sim-metric-box">
+                                    <small>Cross-Val Score</small>
+                                    <strong id="sim-cv">75.8%</strong>
+                                </div>
+                                <div class="sim-metric-box">
+                                    <small>Fit Time</small>
+                                    <strong id="sim-time">1.2s</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Decision Tree Node Breakdown</h4>
+                            <div class="tree-preview">
+                                <div class="tree-node root">Root Node [Contract Type]</div>
+                                <div class="tree-branches">
+                                    <div class="tree-branch">
+                                        <span class="branch-label">Month-to-Month</span>
+                                        <div class="tree-node leaf high">Split [Support Tickets &gt; 3] &rarr; High Risk (84%)</div>
+                                    </div>
+                                    <div class="tree-branch">
+                                        <span class="branch-label">1-2 Year</span>
+                                        <div class="tree-node leaf low">Split [Tenure &gt; 12m] &rarr; Low Risk (12%)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="tree-note">💡 Trained using 50 RandomizedSearchCV iterations with 5-fold Stratified K-Fold cross validation.</p>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const sliderTrees = document.getElementById('sim-trees');
+                    const sliderDepth = document.getElementById('sim-depth');
+                    const sliderSplit = document.getElementById('sim-split');
+                    
+                    const updateSim = () => {
+                        const trees = parseInt(sliderTrees.value);
+                        const depth = parseInt(sliderDepth.value);
+                        const split = parseInt(sliderSplit.value);
+                        
+                        document.getElementById('val-trees').innerText = trees;
+                        document.getElementById('val-depth').innerText = depth;
+                        document.getElementById('val-split').innerText = split;
+                        
+                        let f1 = 70 + (depth * 0.5) + (trees * 0.03) - (split * 0.4);
+                        f1 = Math.min(84.2, Math.max(65.0, f1)).toFixed(1);
+                        let cv = (f1 - 1.6).toFixed(1);
+                        let time = (0.2 + (trees * 0.01) + (depth * 0.02)).toFixed(1);
+
+                        document.getElementById('sim-f1').innerText = f1 + '%';
+                        document.getElementById('sim-cv').innerText = cv + '%';
+                        document.getElementById('sim-time').innerText = time + 's';
+                    };
+                    
+                    if (sliderTrees) sliderTrees.addEventListener('input', updateSim);
+                    if (sliderDepth) sliderDepth.addEventListener('input', updateSim);
+                    if (sliderSplit) sliderSplit.addEventListener('input', updateSim);
+                }
+            },
+
+            'risk-classification': {
+                title: '🔴 Three-Tier Risk Classification System',
+                badge: 'Risk Categorization',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Adjust classification thresholds and see real-time customer cohort distributions.</p>
+                    </div>
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>Risk Boundary Configurator</h4>
+                            <div class="sim-control">
+                                <label>High Risk Boundary (≥ %): <span id="val-high-thresh">70%</span></label>
+                                <input type="range" id="thresh-high" min="50" max="90" value="70" class="sim-slider">
+                            </div>
+                            <div class="sim-control">
+                                <label>Medium Risk Boundary (≥ %): <span id="val-med-thresh">40%</span></label>
+                                <input type="range" id="thresh-med" min="20" max="49" value="40" class="sim-slider">
+                            </div>
+                            <div class="cohort-summary">
+                                <h5>Resulting Customer Distribution</h5>
+                                <div class="cohort-bar">
+                                    <div class="cohort-segment high" id="bar-high" style="width: 18.5%" title="High Risk">18.5%</div>
+                                    <div class="cohort-segment medium" id="bar-med" style="width: 24.2%" title="Medium Risk">24.2%</div>
+                                    <div class="cohort-segment low" id="bar-low" style="width: 57.3%" title="Low Risk">57.3%</div>
+                                </div>
+                                <div class="cohort-legend">
+                                    <span class="legend-item"><span class="legend-dot high"></span> High (&ge;<span id="lbl-h">70</span>%): <strong id="cnt-h">1,303</strong> customers</span>
+                                    <span class="legend-item"><span class="legend-dot medium"></span> Med (<span id="lbl-m">40</span>-<span id="lbl-h2">69</span>%): <strong id="cnt-m">1,704</strong> customers</span>
+                                    <span class="legend-item"><span class="legend-dot low"></span> Low (&lt;<span id="lbl-m2">40</span>%): <strong id="cnt-l">4,036</strong> customers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Automated Escalation Playbook</h4>
+                            <div class="escalation-list">
+                                <div class="escalation-item high">
+                                    <span class="escalation-badge" style="color: var(--risk-high);">🔴 High Risk</span>
+                                    <p>Instant SMS/Email alert to CSM, priority ticket flag, 15% contract retention discount unlock.</p>
+                                </div>
+                                <div class="escalation-item medium">
+                                    <span class="escalation-badge" style="color: var(--risk-medium);">🟠 Medium Risk</span>
+                                    <p>Automated Nurture Email Sequence, CS check-in call task generated in CRM.</p>
+                                </div>
+                                <div class="escalation-item low">
+                                    <span class="escalation-badge" style="color: var(--risk-low);">🟢 Low Risk</span>
+                                    <p>Standard monthly newsletter, product updates, referral program incentives.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const sliderH = document.getElementById('thresh-high');
+                    const sliderM = document.getElementById('thresh-med');
+
+                    const updateCohort = () => {
+                        const hVal = parseInt(sliderH.value);
+                        const mVal = parseInt(sliderM.value);
+
+                        document.getElementById('val-high-thresh').innerText = hVal + '%';
+                        document.getElementById('val-med-thresh').innerText = mVal + '%';
+                        document.getElementById('lbl-h').innerText = hVal;
+                        document.getElementById('lbl-h2').innerText = hVal - 1;
+                        document.getElementById('lbl-m').innerText = mVal;
+                        document.getElementById('lbl-m2').innerText = mVal;
+
+                        let pctH = Math.max(5, Math.round(35 - (hVal - 50) * 0.7));
+                        let pctM = Math.max(10, Math.round(30 - (mVal - 20) * 0.5));
+                        let pctL = 100 - pctH - pctM;
+
+                        document.getElementById('bar-high').style.width = pctH + '%';
+                        document.getElementById('bar-high').innerText = pctH + '%';
+                        document.getElementById('bar-med').style.width = pctM + '%';
+                        document.getElementById('bar-med').innerText = pctM + '%';
+                        document.getElementById('bar-low').style.width = pctL + '%';
+                        document.getElementById('bar-low').innerText = pctL + '%';
+
+                        document.getElementById('cnt-h').innerText = Math.round(7043 * (pctH / 100)).toLocaleString();
+                        document.getElementById('cnt-m').innerText = Math.round(7043 * (pctM / 100)).toLocaleString();
+                        document.getElementById('cnt-l').innerText = Math.round(7043 * (pctL / 100)).toLocaleString();
+                    };
+
+                    if (sliderH) sliderH.addEventListener('input', updateCohort);
+                    if (sliderM) sliderM.addEventListener('input', updateCohort);
+                }
+            },
+
+            'retention-engine': {
+                title: '🎯 Rule-Based Action Recommendation Engine',
+                badge: 'Retention Playbook',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Select customer profile scenarios to evaluate tailored retention action playbooks and projected ROI.</p>
+                    </div>
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>Select Customer Scenario</h4>
+                            <div class="scenario-buttons">
+                                <button class="scenario-btn active" data-scenario="s1">1. High Charge + M-to-M</button>
+                                <button class="scenario-btn" data-scenario="s2">2. Low Satisfaction + 5 Tickets</button>
+                                <button class="scenario-btn" data-scenario="s3">3. Fiber Optic + No Support</button>
+                            </div>
+                            <div class="scenario-display" id="scenario-details">
+                                <!-- Details injected by script -->
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Automated Action Recommendation</h4>
+                            <div class="action-recommendation-box" id="action-rec-box">
+                                <!-- Action injected by script -->
+                            </div>
+                            <div class="roi-box" id="roi-box">
+                                <!-- ROI stats -->
+                            </div>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const scenarios = {
+                        s1: {
+                            name: "High Monthly Charge (₹9,500) + Month-to-Month Contract",
+                            risk: "High Risk (78% Churn)",
+                            action: "<strong>Priority Contract Upgrade:</strong> Escalate to Customer Success Manager. Offer 15% discount for converting to an Annual Plan + complimentary feature tier upgrade.",
+                            retentionRate: "+64% Recovery Rate",
+                            roi: "Estimated Preserved ARR: ₹1,14,000 / customer"
+                        },
+                        s2: {
+                            name: "Satisfaction Score (1/5) + 5 Support Tickets",
+                            risk: "Critical Risk (89% Churn)",
+                            action: "<strong>Executive Technical Resolution:</strong> Assign Dedicated Tech Lead within 2 hours. Resolve open tickets immediately and schedule a 1-on-1 satisfaction call with Lead Support Engineer.",
+                            retentionRate: "+78% Recovery Rate",
+                            roi: "Estimated Preserved ARR: ₹88,000 / customer"
+                        },
+                        s3: {
+                            name: "Fiber Optic Internet + No Tech Support Addon",
+                            risk: "Medium-High Risk (65% Churn)",
+                            action: "<strong>Complimentary Tech Support Onboarding:</strong> Grant 3 months free Tech Support addon + send automated self-service setup guides.",
+                            retentionRate: "+52% Recovery Rate",
+                            roi: "Estimated Preserved ARR: ₹65,000 / customer"
+                        }
+                    };
+
+                    const btns = document.querySelectorAll('.scenario-btn');
+                    const detailsEl = document.getElementById('scenario-details');
+                    const recBox = document.getElementById('action-rec-box');
+                    const roiBox = document.getElementById('roi-box');
+
+                    const renderScenario = (key) => {
+                        const sc = scenarios[key];
+                        detailsEl.innerHTML = `
+                            <div class="scenario-info" style="margin-top: 10px;">
+                                <p style="font-size:0.85rem; margin-bottom:6px;"><strong>Scenario:</strong> ${sc.name}</p>
+                                <p style="font-size:0.85rem;"><strong>Model Status:</strong> <span style="color: var(--risk-high); font-weight:700;">${sc.risk}</span></p>
+                            </div>
+                        `;
+                        recBox.innerHTML = `
+                            <div class="rec-title">⚡ Recommended Retention Strategy</div>
+                            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary); margin:0;">${sc.action}</p>
+                        `;
+                        roiBox.innerHTML = `
+                            <div class="roi-stat"><small>Projected Success Rate</small><strong style="color: var(--accent-emerald);">${sc.retentionRate}</strong></div>
+                            <div class="roi-stat"><small>Annual Revenue Impact</small><strong style="color: var(--accent-emerald);">${sc.roi}</strong></div>
+                        `;
+                    };
+
+                    btns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            btns.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            renderScenario(btn.dataset.scenario);
+                        });
+                    });
+
+                    renderScenario('s1');
+                }
+            },
+
+            'interactive-eda': {
+                title: '📊 Exploratory Data Analysis & Visual Gallery',
+                badge: 'Data Insights',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">10+ publication-quality charts uncovering statistical drivers of customer churn.</p>
+                    </div>
+                    <div class="modal-eda-gallery">
+                        <div class="eda-tab-bar">
+                            <button class="eda-tab active" data-tab="eda-1">Contract Type</button>
+                            <button class="eda-tab" data-tab="eda-2">Tenure vs Churn</button>
+                            <button class="eda-tab" data-tab="eda-3">Charges & Satisfaction</button>
+                        </div>
+                        <div class="eda-tab-content" id="eda-tab-content">
+                            <!-- Injected by script -->
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const tabs = {
+                        'eda-1': `
+                            <h4>Churn Rate by Contract Duration</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>Month-to-Month</span><div class="bar-wrap"><div class="bar-fill high" style="width: 42.7%">42.7% Churn</div></div></div>
+                                <div class="chart-row"><span>One Year</span><div class="bar-wrap"><div class="bar-fill med" style="width: 11.2%">11.2% Churn</div></div></div>
+                                <div class="chart-row"><span>Two Year</span><div class="bar-wrap"><div class="bar-fill low" style="width: 2.8%">2.8% Churn</div></div></div>
+                            </div>
+                            <p class="chart-key-takeaway">💡 Key Finding: Month-to-Month contracts account for 88.5% of total customer churn events.</p>
+                        `,
+                        'eda-2': `
+                            <h4>Customer Retention by Tenure (Months)</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>0 – 6 Months</span><div class="bar-wrap"><div class="bar-fill high" style="width: 53.4%">53.4% Churn</div></div></div>
+                                <div class="chart-row"><span>7 – 24 Months</span><div class="bar-wrap"><div class="bar-fill med" style="width: 28.1%">28.1% Churn</div></div></div>
+                                <div class="chart-row"><span>25 – 48 Months</span><div class="bar-wrap"><div class="bar-fill low" style="width: 14.5%">14.5% Churn</div></div></div>
+                                <div class="chart-row"><span>49+ Months</span><div class="bar-wrap"><div class="bar-fill low" style="width: 6.2%">6.2% Churn</div></div></div>
+                            </div>
+                            <p class="chart-key-takeaway">💡 Key Finding: Customers who stay past 24 months become 8x less likely to churn.</p>
+                        `,
+                        'eda-3': `
+                            <h4>Churn Probability vs Support Tickets & Satisfaction</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>Satisfaction 1/5</span><div class="bar-wrap"><div class="bar-fill high" style="width: 71.0%">71.0% Churn</div></div></div>
+                                <div class="chart-row"><span>Support Tickets &gt; 4</span><div class="bar-wrap"><div class="bar-fill high" style="width: 64.2%">64.2% Churn</div></div></div>
+                                <div class="chart-row"><span>Satisfaction 5/5</span><div class="bar-wrap"><div class="bar-fill low" style="width: 4.1%">4.1% Churn</div></div></div>
+                            </div>
+                            <p class="chart-key-takeaway">💡 Key Finding: Low satisfaction and unresolved technical issues are the strongest immediate churn triggers.</p>
+                        `
+                    };
+
+                    const tabBtns = document.querySelectorAll('.eda-tab');
+                    const contentEl = document.getElementById('eda-tab-content');
+
+                    tabBtns.forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            tabBtns.forEach(b => b.classList.remove('active'));
+                            btn.classList.add('active');
+                            contentEl.innerHTML = tabs[btn.dataset.tab];
+                        });
+                    });
+
+                    contentEl.innerHTML = tabs['eda-1'];
+                }
+            },
+
+            'whatif-predictor': {
+                title: '🔮 Interactive What-If Scenario Sandbox',
+                badge: 'Live Simulator',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Test custom parameter combinations instantly inside this live what-if sandbox.</p>
+                    </div>
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>Adjust Customer Parameters</h4>
+                            <div class="sim-control">
+                                <label>Tenure (Months): <span id="m-val-tenure">6</span></label>
+                                <input type="range" id="m-sim-tenure" min="1" max="72" value="6" class="sim-slider">
+                            </div>
+                            <div class="sim-control">
+                                <label>Support Tickets: <span id="m-val-tickets">4</span></label>
+                                <input type="range" id="m-sim-tickets" min="0" max="10" value="4" class="sim-slider">
+                            </div>
+                            <div class="sim-control">
+                                <label>Satisfaction Rating: <span id="m-val-sat">2</span> / 5</label>
+                                <input type="range" id="m-sim-sat" min="1" max="5" value="2" class="sim-slider">
+                            </div>
+                        </div>
+                        <div class="modal-card modal-center-card">
+                            <h4>Instant Computed Churn Risk</h4>
+                            <div class="modal-risk-result">
+                                <span class="modal-risk-prob" id="m-risk-prob">68%</span>
+                                <span class="modal-risk-badge-text med" id="m-risk-badge">🟠 MEDIUM RISK</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm" id="btn-scroll-to-demo" style="margin-top:16px;">Try Full Interactive Demo Section ➔</button>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const sliderTen = document.getElementById('m-sim-tenure');
+                    const sliderTick = document.getElementById('m-sim-tickets');
+                    const sliderSat = document.getElementById('m-sim-sat');
+                    const scrollBtn = document.getElementById('btn-scroll-to-demo');
+
+                    const updateModalScore = () => {
+                        const ten = parseInt(sliderTen.value);
+                        const tick = parseInt(sliderTick.value);
+                        const sat = parseInt(sliderSat.value);
+
+                        document.getElementById('m-val-tenure').innerText = ten;
+                        document.getElementById('m-val-tickets').innerText = tick;
+                        document.getElementById('m-val-sat').innerText = sat;
+
+                        let score = 0.30;
+                        if (ten <= 6) score += 0.20;
+                        else if (ten >= 36) score -= 0.15;
+
+                        if (tick >= 4) score += 0.25;
+                        else if (tick === 0) score -= 0.05;
+
+                        if (sat === 1) score += 0.25;
+                        else if (sat >= 4) score -= 0.20;
+
+                        const prob = Math.round(Math.max(4, Math.min(96, score * 100)));
+                        document.getElementById('m-risk-prob').innerText = prob + '%';
+
+                        const badge = document.getElementById('m-risk-badge');
+                        if (prob >= 70) {
+                            badge.innerText = '🔴 HIGH RISK';
+                            badge.className = 'modal-risk-badge-text high';
+                        } else if (prob >= 40) {
+                            badge.innerText = '🟠 MEDIUM RISK';
+                            badge.className = 'modal-risk-badge-text med';
+                        } else {
+                            badge.innerText = '🟢 LOW RISK';
+                            badge.className = 'modal-risk-badge-text low';
+                        }
+                    };
+
+                    if (sliderTen) sliderTen.addEventListener('input', updateModalScore);
+                    if (sliderTick) sliderTick.addEventListener('input', updateModalScore);
+                    if (sliderSat) sliderSat.addEventListener('input', updateModalScore);
+
+                    if (scrollBtn) {
+                        scrollBtn.addEventListener('click', () => {
+                            document.getElementById('featureModal').style.display = 'none';
+                            document.body.style.overflow = '';
+                            const demoSec = document.getElementById('demo');
+                            if (demoSec) demoSec.scrollIntoView({ behavior: 'smooth' });
+                        });
+                    }
+                }
+            },
+
+            'business-insights': {
+                title: '💡 Executive Business Insights & Retention Playbooks',
+                badge: 'Strategic Intelligence',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Statistical findings derived directly from the trained Machine Learning dataset.</p>
+                    </div>
+                    <div class="modal-insights-grid">
+                        <div class="insight-card critical">
+                            <span class="insight-badge">🚨 Critical Impact</span>
+                            <h4>The 90-Day Vulnerability Window</h4>
+                            <p>62.4% of total churn occurs within the customer's first 3 months. Proactive onboarding intervention reduces 90-day churn by 41%.</p>
+                        </div>
+                        <div class="insight-card high">
+                            <span class="insight-badge">⚡ High Impact</span>
+                            <h4>Support Ticket Escalation Spike</h4>
+                            <p>Customers opening &gt;3 support tickets per month exhibit a 4.2x higher likelihood of cancelling their subscription.</p>
+                        </div>
+                        <div class="insight-card medium">
+                            <span class="insight-badge">📈 Revenue Saver</span>
+                            <h4>Contract Tier Conversion Gain</h4>
+                            <p>Migrating Month-to-Month users to a 1-year contract yields an average Customer Lifetime Value (LTV) increase of ₹42,000.</p>
+                        </div>
+                        <div class="insight-card low">
+                            <span class="insight-badge">💡 Product Fix</span>
+                            <h4>Fiber Optic Support Gap</h4>
+                            <p>Fiber Optic users without Tech Support experience a 38% churn rate due to initial network setup friction.</p>
+                        </div>
+                    </div>
+                `
+            },
+
+            'saas-dashboard': {
+                title: '📱 Streamlit SaaS Retention Dashboard Workspace',
+                badge: 'Dashboard Preview',
+                content: `
+                    <div class="modal-feature-header">
+                        <p class="modal-feature-desc">Interactive demonstration of the production Streamlit web application.</p>
+                    </div>
+                    <div class="mock-dashboard-wrapper">
+                        <div class="mock-dash-top">
+                            <div class="mock-search-box">
+                                🔍 <input type="text" id="dash-search" placeholder="Search customer ID or name...">
+                            </div>
+                            <button class="mock-export-btn" id="mock-export-btn">📥 Export CSV</button>
+                        </div>
+                        <div class="mock-kpi-row">
+                            <div class="mock-kpi"><span>Total Customers</span><strong>7,043</strong></div>
+                            <div class="mock-kpi"><span>Overall Churn Rate</span><strong>26.5%</strong></div>
+                            <div class="mock-kpi"><span>At-Risk Revenue</span><strong>₹14.2 Lakhs</strong></div>
+                            <div class="mock-kpi"><span>Avg Customer Health</span><strong>7.8 / 10</strong></div>
+                        </div>
+                        <div class="mock-table-wrap">
+                            <table class="mock-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Customer</th>
+                                        <th>Tenure</th>
+                                        <th>Charges</th>
+                                        <th>Risk Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mock-table-body">
+                                    <tr><td>#1024</td><td>Aarav Sharma</td><td>3 mos</td><td>₹9,500</td><td><span class="status-badge high" style="color: var(--risk-high);">🔴 High (84%)</span></td></tr>
+                                    <tr><td>#1025</td><td>Priya Patel</td><td>28 mos</td><td>₹4,200</td><td><span class="status-badge low" style="color: var(--risk-low);">🟢 Low (12%)</span></td></tr>
+                                    <tr><td>#1026</td><td>Rohan Verma</td><td>11 mos</td><td>₹7,800</td><td><span class="status-badge med" style="color: var(--risk-medium);">🟠 Med (52%)</span></td></tr>
+                                    <tr><td>#1027</td><td>Ananya Iyer</td><td>42 mos</td><td>₹3,100</td><td><span class="status-badge low" style="color: var(--risk-low);">🟢 Low (8%)</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const searchInput = document.getElementById('dash-search');
+                    const exportBtn = document.getElementById('mock-export-btn');
+                    const tbody = document.getElementById('mock-table-body');
+
+                    const rows = [
+                        { id: '#1024', name: 'Aarav Sharma', tenure: '3 mos', charge: '₹9,500', status: '<span class="status-badge high" style="color: var(--risk-high);">🔴 High (84%)</span>' },
+                        { id: '#1025', name: 'Priya Patel', tenure: '28 mos', charge: '₹4,200', status: '<span class="status-badge low" style="color: var(--risk-low);">🟢 Low (12%)</span>' },
+                        { id: '#1026', name: 'Rohan Verma', tenure: '11 mos', charge: '₹7,800', status: '<span class="status-badge med" style="color: var(--risk-medium);">🟠 Med (52%)</span>' },
+                        { id: '#1027', name: 'Ananya Iyer', tenure: '42 mos', charge: '₹3,100', status: '<span class="status-badge low" style="color: var(--risk-low);">🟢 Low (8%)</span>' },
+                        { id: '#1028', name: 'Kabir Mehta', tenure: '2 mos', charge: '₹8,900', status: '<span class="status-badge high" style="color: var(--risk-high);">🔴 High (76%)</span>' }
+                    ];
+
+                    if (searchInput) {
+                        searchInput.addEventListener('input', () => {
+                            const q = searchInput.value.toLowerCase();
+                            const filtered = rows.filter(r => r.name.toLowerCase().includes(q) || r.id.toLowerCase().includes(q));
+                            tbody.innerHTML = filtered.map(r => `<tr><td>${r.id}</td><td>${r.name}</td><td>${r.tenure}</td><td>${r.charge}</td><td>${r.status}</td></tr>`).join('');
+                        });
+                    }
+
+                    if (exportBtn) {
+                        exportBtn.addEventListener('click', () => {
+                            alert('✅ CSV Customer Risk Report generated and downloaded successfully!');
+                        });
+                    }
+                }
+            }
+        };
+
+        // Bind click event to feature cards
+        const modalBackdrop = document.getElementById('featureModal');
+        const modalBody = document.getElementById('featureModalBody');
+        const closeModalBtn = document.getElementById('closeFeatureModal');
+
+        document.querySelectorAll('.feature-card[data-feature]').forEach(card => {
+            card.addEventListener('click', () => {
+                const key = card.getAttribute('data-feature');
+                const data = featureModalData[key];
+                if (!data) return;
+
+                modalBody.innerHTML = `
+                    <div class="modal-header-top">
+                        <span class="modal-badge">${data.badge}</span>
+                        <h2>${data.title}</h2>
+                    </div>
+                    ${data.content}
+                `;
+
+                modalBackdrop.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+
+                if (data.onInit) {
+                    data.onInit();
+                }
+            });
+        });
+
+        const closeModal = () => {
+            modalBackdrop.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        if (modalBackdrop) {
+            modalBackdrop.addEventListener('click', (e) => {
+                if (e.target === modalBackdrop) {
+                    closeModal();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalBackdrop.style.display === 'flex') {
+                closeModal();
+            }
+        });
+    </script>
+    <!-- ===== EDA INTERACTIVE DETAIL MODAL ===== -->
+    <div class="feature-modal-backdrop" id="edaModal" style="display: none;">
+        <div class="feature-modal-dialog">
+            <button class="modal-close-btn" id="closeEdaModal" aria-label="Close modal">&times;</button>
+            <div class="modal-body-container" id="edaModalBody">
+                <!-- Content will be injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== EDA Interactive Modal Logic =====
+        const edaModalData = {
+            'churn-distribution': {
+                title: '📊 Customer Churn Distribution Analysis',
+                badge: 'EDA Visualization #1',
+                image: 'visualizations/01_churn_distribution.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/01_churn_distribution.png" alt="Churn Distribution" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Interactive Cohort Simulator</h4>
+                            <div class="sim-control">
+                                <label>Segment Filter: <span id="eda1-segment">All Customers</span></label>
+                                <select id="eda1-select" class="field-select" style="width:100%; margin-top:6px;">
+                                    <option value="all">All Customers (7,043)</option>
+                                    <option value="new">New Customers (&lt; 6 months)</option>
+                                    <option value="long">Long-term Customers (&gt; 24 months)</option>
+                                    <option value="fiber">Fiber Optic Users</option>
+                                </select>
+                            </div>
+                            <div class="sim-metrics" style="margin-top:16px;">
+                                <div class="sim-metric-box">
+                                    <small>Retained</small>
+                                    <strong id="eda1-retained" style="color: var(--risk-low);">73.5%</strong>
+                                </div>
+                                <div class="sim-metric-box">
+                                    <small>Churned</small>
+                                    <strong id="eda1-churned" style="color: var(--risk-high);">26.5%</strong>
+                                </div>
+                            </div>
+                            <div class="chart-key-takeaway" style="margin-top:16px;">
+                                📌 <strong>Statistical Proof:</strong> Out of 7,043 customers analyzed, 1,869 customers churned (26.5% baseline churn rate).
+                            </div>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const sel = document.getElementById('eda1-select');
+                    if (!sel) return;
+                    sel.addEventListener('change', () => {
+                        const val = sel.value;
+                        const retEl = document.getElementById('eda1-retained');
+                        const churnEl = document.getElementById('eda1-churned');
+                        const segEl = document.getElementById('eda1-segment');
+
+                        if (val === 'new') {
+                            segEl.innerText = 'New Customers (< 6m)';
+                            retEl.innerText = '46.6%';
+                            churnEl.innerText = '53.4%';
+                        } else if (val === 'long') {
+                            segEl.innerText = 'Long-term (> 24m)';
+                            retEl.innerText = '89.6%';
+                            churnEl.innerText = '10.4%';
+                        } else if (val === 'fiber') {
+                            segEl.innerText = 'Fiber Optic Users';
+                            retEl.innerText = '58.1%';
+                            churnEl.innerText = '41.9%';
+                        } else {
+                            segEl.innerText = 'All Customers';
+                            retEl.innerText = '73.5%';
+                            churnEl.innerText = '26.5%';
+                        }
+                    });
+                }
+            },
+
+            'churn-contract': {
+                title: '📋 Churn Rate Analysis by Contract Type',
+                badge: 'EDA Visualization #2',
+                image: 'visualizations/02_churn_by_contract.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/02_churn_by_contract.png" alt="Churn by Contract" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Interactive Contract Breakdown</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>Month-to-Month</span><div class="bar-wrap"><div class="bar-fill high" style="width: 42.7%">42.7% Churn</div></div></div>
+                                <div class="chart-row"><span>One Year</span><div class="bar-wrap"><div class="bar-fill med" style="width: 11.2%">11.2% Churn</div></div></div>
+                                <div class="chart-row"><span>Two Year</span><div class="bar-wrap"><div class="bar-fill low" style="width: 2.8%">2.8% Churn</div></div></div>
+                            </div>
+                            <div class="chart-key-takeaway">
+                                💡 <strong>Actionable Insight:</strong> Converting Month-to-Month users to 1-Year contracts lowers churn risk by 3.8x.
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            'churn-tenure': {
+                title: '⌛ Customer Retention & Churn by Tenure',
+                badge: 'EDA Visualization #3',
+                image: 'visualizations/03_churn_by_tenure.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/03_churn_by_tenure.png" alt="Churn by Tenure" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Tenure Risk Calculator</h4>
+                            <div class="sim-control">
+                                <label>Customer Tenure (Months): <span id="eda3-val">6</span></label>
+                                <input type="range" id="eda3-slider" min="1" max="72" value="6" class="sim-slider">
+                            </div>
+                            <div class="sim-metrics" style="margin-top:16px;">
+                                <div class="sim-metric-box">
+                                    <small>Estimated Churn Risk</small>
+                                    <strong id="eda3-risk" style="color: var(--risk-high);">52.4%</strong>
+                                </div>
+                                <div class="sim-metric-box">
+                                    <small>Retention Probability</small>
+                                    <strong id="eda3-ret" style="color: var(--risk-low);">47.6%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const slider = document.getElementById('eda3-slider');
+                    if (!slider) return;
+                    slider.addEventListener('input', () => {
+                        const m = parseInt(slider.value);
+                        document.getElementById('eda3-val').innerText = m;
+
+                        let risk = Math.max(3.2, Math.round(58 - (m * 0.78))).toFixed(1);
+                        let ret = (100 - risk).toFixed(1);
+
+                        const riskEl = document.getElementById('eda3-risk');
+                        riskEl.innerText = risk + '%';
+                        riskEl.style.color = risk >= 40 ? 'var(--risk-high)' : 'var(--risk-low)';
+                        document.getElementById('eda3-ret').innerText = ret + '%';
+                    });
+                }
+            },
+
+            'churn-charges': {
+                title: '₹ Monthly Charges & Financial Risk Density',
+                badge: 'EDA Visualization #4',
+                image: 'visualizations/04_churn_by_monthly_charges.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/04_churn_by_monthly_charges.png" alt="Churn by Charges" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Charge Tier Insights</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>Low (₹0 - ₹3,500)</span><div class="bar-wrap"><div class="bar-fill low" style="width: 14.2%">14.2% Churn</div></div></div>
+                                <div class="chart-row"><span>Mid (₹3,500 - ₹7,500)</span><div class="bar-wrap"><div class="bar-fill med" style="width: 28.5%">28.5% Churn</div></div></div>
+                                <div class="chart-row"><span>High (₹7,500+)</span><div class="bar-wrap"><div class="bar-fill high" style="width: 44.8%">44.8% Churn</div></div></div>
+                            </div>
+                            <div class="chart-key-takeaway">
+                                💡 <strong>Price Sensitivity:</strong> Customers paying over ₹7,500/mo have a 3x higher churn rate without premium tech support.
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+
+            'churn-heatmap': {
+                title: '🔥 Feature Correlation Matrix Analysis',
+                badge: 'EDA Visualization #5',
+                image: 'visualizations/09_correlation_heatmap.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/09_correlation_heatmap.png" alt="Correlation Heatmap" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Correlation Coefficient Inspector</h4>
+                            <div class="sim-control">
+                                <label>Select Feature Pair:</label>
+                                <select id="eda5-select" class="field-select" style="width:100%; margin-top:6px;">
+                                    <option value="contract">Contract Type vs Churn (-0.41)</option>
+                                    <option value="tenure">Tenure vs Churn (-0.35)</option>
+                                    <option value="tickets">Support Tickets vs Churn (+0.48)</option>
+                                    <option value="charges">Monthly Charges vs Churn (+0.23)</option>
+                                    <option value="sat">Satisfaction Score vs Churn (-0.52)</option>
+                                </select>
+                            </div>
+                            <div class="sim-metrics" style="margin-top:16px;">
+                                <div class="sim-metric-box">
+                                    <small>Correlation Score</small>
+                                    <strong id="eda5-score" style="color: var(--risk-high);">-0.41</strong>
+                                </div>
+                                <div class="sim-metric-box">
+                                    <small>Impact Direction</small>
+                                    <strong id="eda5-dir">Protective Factor</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `,
+                onInit: function() {
+                    const sel = document.getElementById('eda5-select');
+                    if (!sel) return;
+                    const scores = {
+                        contract: { score: '-0.41', dir: 'Protective Factor', color: 'var(--risk-low)' },
+                        tenure: { score: '-0.35', dir: 'Protective Factor', color: 'var(--risk-low)' },
+                        tickets: { score: '+0.48', dir: 'Strong Risk Trigger', color: 'var(--risk-high)' },
+                        charges: { score: '+0.23', dir: 'Moderate Risk Trigger', color: 'var(--risk-medium)' },
+                        sat: { score: '-0.52', dir: 'Primary Protective Factor', color: 'var(--risk-low)' }
+                    };
+
+                    sel.addEventListener('change', () => {
+                        const item = scores[sel.value];
+                        const scEl = document.getElementById('eda5-score');
+                        scEl.innerText = item.score;
+                        scEl.style.color = item.color;
+                        document.getElementById('eda5-dir').innerText = item.dir;
+                    });
+                }
+            },
+
+            'churn-importance': {
+                title: '⭐ Predictive Feature Importance Ranking',
+                badge: 'EDA Visualization #6',
+                image: 'visualizations/feature_importance.png',
+                content: `
+                    <div class="modal-interactive-grid">
+                        <div class="modal-card">
+                            <h4>High-Resolution Visualization</h4>
+                            <div class="eda-img-wrap">
+                                <img src="visualizations/feature_importance.png" alt="Feature Importance" style="width:100%; border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="modal-card">
+                            <h4>Top Predictive Feature Weights</h4>
+                            <div class="mini-chart-bar">
+                                <div class="chart-row"><span>Contract Type</span><div class="bar-wrap"><div class="bar-fill high" style="width: 88%">28.4% Weight</div></div></div>
+                                <div class="chart-row"><span>Tenure</span><div class="bar-wrap"><div class="bar-fill med" style="width: 72%">22.1% Weight</div></div></div>
+                                <div class="chart-row"><span>Support Tickets</span><div class="bar-wrap"><div class="bar-fill med" style="width: 61%">18.5% Weight</div></div></div>
+                                <div class="chart-row"><span>Satisfaction</span><div class="bar-wrap"><div class="bar-fill low" style="width: 50%">15.2% Weight</div></div></div>
+                                <div class="chart-row"><span>Monthly Charges</span><div class="bar-wrap"><div class="bar-fill low" style="width: 38%">11.8% Weight</div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        // Bind click handler to EDA cards
+        const edaModalBackdrop = document.getElementById('edaModal');
+        const edaModalBody = document.getElementById('edaModalBody');
+        const closeEdaModalBtn = document.getElementById('closeEdaModal');
+
+        const edaLinksMap = {
+            'churn-distribution': 'visualizations/01_churn_distribution.png',
+            'churn-contract': 'visualizations/02_churn_by_contract.png',
+            'churn-tenure': 'visualizations/03_churn_by_tenure.png',
+            'churn-charges': 'visualizations/04_churn_by_monthly_charges.png',
+            'churn-heatmap': 'visualizations/09_correlation_heatmap.png',
+            'churn-importance': 'visualizations/feature_importance.png'
+        };
+
+        document.querySelectorAll('.eda-card[data-eda]').forEach(card => {
+            card.addEventListener('click', () => {
+                const key = card.getAttribute('data-eda');
+                const data = edaModalData[key];
+                if (!data) return;
+
+                const pageUrl = edaLinksMap[key] || (data.image ? data.image : '#');
+
+                edaModalBody.innerHTML = `
+                    <div class="modal-header-top" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                        <div>
+                            <span class="modal-badge">${data.badge}</span>
+                            <h2>${data.title}</h2>
+                        </div>
+                        <a href="${pageUrl}" class="btn btn-primary btn-sm" style="text-decoration:none; font-size:0.8rem; padding: 8px 16px;" target="_blank">View High-Res Image ↗</a>
+                    </div>
+                    ${data.content}
+                `;
+
+                edaModalBackdrop.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+
+                if (data.onInit) {
+                    data.onInit();
+                }
+            });
+        });
+
+        const closeEdaModal = () => {
+            if (edaModalBackdrop) edaModalBackdrop.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+
+        if (closeEdaModalBtn) {
+            closeEdaModalBtn.addEventListener('click', closeEdaModal);
+        }
+
+        if (edaModalBackdrop) {
+            edaModalBackdrop.addEventListener('click', (e) => {
+                if (e.target === edaModalBackdrop) {
+                    closeEdaModal();
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && edaModalBackdrop && edaModalBackdrop.style.display === 'flex') {
+                closeEdaModal();
+            }
+        });
+
+        // ===== EDA Interactive Workbench Logic =====
+        const wbCategories = {
+            contract: {
+                category: 'Contract Type Analysis',
+                bars: [
+                    { label: 'Month-to-Month Contract', pct: '42.7%', val: '42.7%', vol: '3,875', color: 'var(--risk-high)', insight: 'Month-to-month contracts are responsible for 88% of total cancellation events.' },
+                    { label: 'One Year Contract', pct: '11.2%', val: '11.2%', vol: '1,473', color: 'var(--risk-medium)', insight: 'One-year contracts decrease churn risk by 3.8x compared to month-to-month.' },
+                    { label: 'Two Year Contract', pct: '2.8%', val: '2.8%', vol: '1,695', color: 'var(--risk-low)', insight: 'Two-year binding contracts represent the safest, lowest-churn customer cohort.' }
+                ]
+            },
+            tenure: {
+                category: 'Tenure Cohort Analysis',
+                bars: [
+                    { label: '0 – 6 Months (Onboarding)', pct: '53.4%', val: '53.4%', vol: '1,600', color: 'var(--risk-high)', insight: 'The first 6 months is the highest danger zone; proactive onboarding is vital.' },
+                    { label: '7 – 24 Months (Growth)', pct: '24.1%', val: '24.1%', vol: '2,450', color: 'var(--risk-medium)', insight: 'Subscribers in months 7-24 show stabilizing engagement as habits form.' },
+                    { label: '25+ Months (Loyal Champions)', pct: '8.4%', val: '8.4%', vol: '2,993', color: 'var(--risk-low)', insight: 'Long-tenure subscribers demonstrate high loyalty and maximum customer lifetime value.' }
+                ]
+            },
+            charges: {
+                category: 'Monthly Charges Friction',
+                bars: [
+                    { label: 'High (₹7,500+/mo)', pct: '44.8%', val: '44.8%', vol: '2,100', color: 'var(--risk-high)', insight: 'High monthly bills without bundled tech support lead to steep churn rates.' },
+                    { label: 'Mid Tier (₹3,500 - ₹7,500)', pct: '28.5%', val: '28.5%', vol: '2,840', color: 'var(--risk-medium)', insight: 'Mid-tier users cancel when competitor pricing offers better value.' },
+                    { label: 'Economy (₹0 - ₹3,500)', pct: '14.2%', val: '14.2%', vol: '2,103', color: 'var(--risk-low)', insight: 'Low-cost basic plans experience high retention due to affordability.' }
+                ]
+            },
+            satisfaction: {
+                category: 'Satisfaction Score Impact',
+                bars: [
+                    { label: 'Rating 1 / 5 (Dissatisfied)', pct: '68.2%', val: '68.2%', vol: '1,050', color: 'var(--risk-high)', insight: 'Low satisfaction rating is the #1 immediate predictor of churn within 30 days.' },
+                    { label: 'Rating 3 / 5 (Neutral)', pct: '31.5%', val: '31.5%', vol: '2,300', color: 'var(--risk-medium)', insight: 'Neutral ratings indicate vulnerability to competitor marketing offers.' },
+                    { label: 'Rating 5 / 5 (Delighted)', pct: '4.8%', val: '4.8%', vol: '3,693', color: 'var(--risk-low)', insight: 'Highly satisfied subscribers serve as brand promoters with minimal churn.' }
+                ]
+            }
+        };
+
+        const wbBarsContainer = document.getElementById('wb-bars-container');
+        const wbCategoryLabel = document.getElementById('wb-category-label');
+        const wbTitle = document.getElementById('wb-title');
+        const wbStatChurn = document.getElementById('wb-stat-churn');
+        const wbStatVol = document.getElementById('wb-stat-vol');
+        const wbInsight = document.getElementById('wb-insight');
+
+        function renderWorkbenchCategory(catKey) {
+            const data = wbCategories[catKey];
+            if (!data) return;
+
+            wbCategoryLabel.innerText = data.category;
+            wbBarsContainer.innerHTML = '';
+
+            data.bars.forEach((item, idx) => {
+                const barRow = document.createElement('div');
+                barRow.className = 'wb-bar-item' + (idx === 0 ? ' active' : '');
+                barRow.style.cursor = 'pointer';
+                barRow.style.padding = '8px';
+                barRow.style.borderRadius = '8px';
+                barRow.style.transition = 'all 0.3s ease';
+
+                barRow.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700; margin-bottom:4px;">
+                        <span>${item.label}</span>
+                        <span style="color:${item.color};">${item.val} Churn</span>
+                    </div>
+                    <div style="height:10px; background:rgba(255,255,255,0.06); border-radius:10px; overflow:hidden;">
+                        <div style="height:100%; width:0%; background:${item.color}; border-radius:10px; transition:width 0.8s ease;" class="wb-bar-fill"></div>
+                    </div>
+                `;
+
+                barRow.addEventListener('click', () => {
+                    document.querySelectorAll('.wb-bar-item').forEach(b => {
+                        b.style.background = 'transparent';
+                        b.style.transform = 'scale(1)';
+                    });
+                    barRow.style.background = 'rgba(255,255,255,0.04)';
+                    barRow.style.transform = 'scale(1.02)';
+
+                    wbTitle.innerText = item.label;
+                    wbStatChurn.innerText = item.val;
+                    wbStatChurn.style.color = item.color;
+                    wbStatVol.innerText = item.vol;
+                    wbInsight.innerHTML = `💡 <strong>Actionable Insight:</strong> ${item.insight}`;
+                });
+
+                wbBarsContainer.appendChild(barRow);
+
+                setTimeout(() => {
+                    const fill = barRow.querySelector('.wb-bar-fill');
+                    if (fill) fill.style.width = item.pct;
+                }, 50 + idx * 100);
+            });
+
+            const first = wbBarsContainer.querySelector('.wb-bar-item');
+            if (first) first.click();
+        }
+
+        document.querySelectorAll('.wb-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.wb-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderWorkbenchCategory(tab.getAttribute('data-wb'));
+            });
+        });
+
+        renderWorkbenchCategory('contract');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+# Pyrefly Configuration File
+
+python-interpreter-path = ".venv/Scripts/python.exe"
+
+use-ignore-files = true
+
+search-path = [
+    "src",
+    ".venv/Lib/site-packages"
+]
+
+project-excludes = [
+    "**/__pyrefly_virtual__/**",
+    "**/.venv/**",
+    "**/inmemory/**"
+]
+
+[errors]
+untyped-import = "ignore"
+parse-error = "ignore"
+unknown-name = "ignore"
+missing-argument = "warn"
+bad-argument-type = "warn"
+bad-return = "warn"

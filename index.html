@@ -1476,7 +1476,7 @@
         }
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalBackdrop.style.display === 'flex') {
+            if (e.key === 'Escape' && modalBackdrop && modalBackdrop.style.display === 'flex') {
                 closeModal();
             }
         });

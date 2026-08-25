@@ -1,4 +1,5 @@
 {
+  "$comment": "Vercel static site build configuration for ChurnGuard AI platform",
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "cleanUrls": true

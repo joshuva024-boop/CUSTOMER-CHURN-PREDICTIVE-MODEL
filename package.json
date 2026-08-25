@@ -1,0 +1,9 @@
+{
+  "name": "customer-churn-predictive-model",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ChurnGuard AI — Customer Churn Predictive Model Web Platform",
+  "scripts": {
+    "build": "echo 'No build step required for static HTML/CSS/JS site'"
+  }
+}
